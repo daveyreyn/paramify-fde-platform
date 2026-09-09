@@ -1,0 +1,39 @@
+{
+  "name": "@paramify/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "fde": "./bin/run.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "./bin/dev.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "oclif": {
+    "bin": "fde",
+    "dirname": "fde",
+    "commands": "./dist/commands",
+    "topicSeparator": " ",
+    "topics": {
+      "config": {
+        "description": "Show or change the CLI configuration"
+      },
+      "paramify": {
+        "description": "Link deliverables to validators in a Paramify instance"
+      }
+    }
+  },
+  "dependencies": {
+    "@oclif/core": "^4.11.4",
+    "@paramify/shared": "*"
+  },
+  "devDependencies": {
+    "tsx": "^4.22.4"
+  }
+}

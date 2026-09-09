@@ -1,0 +1,13 @@
+# build artifacts
+dist/
+.next/
+
+# generated code
+packages/db/src/generated/
+next-env.d.ts
+
+# lockfiles
+package-lock.json
+
+# playwright-mcp session artifacts
+.playwright-mcp/

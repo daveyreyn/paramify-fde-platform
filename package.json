@@ -1,0 +1,34 @@
+{
+  "name": "paramify-fde-platform",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/shared && npm run build -w packages/db && npm run build -w packages/storage && npm run build -w apps/cli && npm run build -w apps/server",
+    "dev": "npm run dev -w apps/server",
+    "db:generate": "npm run generate -w packages/db",
+    "db:migrate": "npm run migrate -w packages/db",
+    "db:push": "npm run push -w packages/db",
+    "db:seed": "npm run seed -w packages/db",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:cli": "bash scripts/test-cli-flow.sh",
+    "typecheck": "npm run build -w packages/shared && npm run build -w packages/db && npm run build -w packages/storage && npm run typecheck -w apps/cli && npm run typecheck -w apps/server"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "prettier": "3.8.4",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "@hono/node-server": "^1.19.13",
+    "postcss": "^8.5.10"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

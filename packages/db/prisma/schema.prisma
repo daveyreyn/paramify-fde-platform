@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  name         String?
+  passwordHash String?
+  isSuper      Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  teams        Team[]
+  tokens       ApiToken[]
+  deliverables Deliverable[]
+}
+
+model ApiToken {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  label     String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Team {
+  id             String   @id @default(cuid())
+  name           String   @unique
+  paramifyApiKey String?
+  createdAt      DateTime @default(now())
+  users          User[]
+
+  deliverables  Deliverable[] @relation("TeamDeliverables")
+  paramifyLinks ParamifyLink[]
+}
+
+model Deliverable {
+  id          String @id @default(cuid())
+  // Unique slug the CLI references (`fde install <name>`); re-uploading the
+  // same name replaces the file and bumps version.
+  name        String @unique
+  title       String
+  description String @default("")
+  tags        Json   @default("[]")
+
+  // Original basename, restored on install; storageKey is the provider key.
+  fileName   String
+  storageKey String
+  size       Int
+  sha256     String
+  language   String?
+
+  version      Int     @default(1)
+  installCount Int     @default(0)
+  // In the marketplace. Stays true when saved to a team.
+  isPublic     Boolean @default(false)
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+  teams    Team[] @relation("TeamDeliverables")
+
+  versions      DeliverableVersion[]
+  paramifyLinks ParamifyLink[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// A deliverable pushed to Paramify as a Validator through one team's API key.
+// Paramify keys are bound to a single workspace, so the team identifies the
+// workspace; syncedVersion is the deliverable version last pushed (drift shows
+// as "out of date" in `fde paramify status`).
+model ParamifyLink {
+  id            String      @id @default(cuid())
+  deliverable   Deliverable @relation(fields: [deliverableId], references: [id], onDelete: Cascade)
+  deliverableId String
+  team          Team        @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  teamId        String
+  // Validator UUID in Paramify.
+  validatorId   String
+  syncedVersion Int
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@unique([deliverableId, teamId])
+}
+
+// Immutable history: one row (and one stored blob) per upload. The parent
+// Deliverable's file fields always mirror the row with the highest version.
+model DeliverableVersion {
+  id            String      @id @default(cuid())
+  deliverable   Deliverable @relation(fields: [deliverableId], references: [id], onDelete: Cascade)
+  deliverableId String
+  version       Int
+
+  fileName   String
+  storageKey String
+  size       Int
+  sha256     String
+  language   String?
+
+  createdAt DateTime @default(now())
+
+  @@unique([deliverableId, version])
+}

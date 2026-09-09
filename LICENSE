@@ -1,0 +1,66 @@
+Copyright (c) 2026 Paramify, Inc. All rights reserved.
+
+VIEW-ONLY LICENSE
+
+This repository is published for the sole purpose of allowing prospective
+employers, collaborators, and other interested parties to read and evaluate the
+source code as a sample of professional work. It is not open-source software.
+
+1. PERMISSION GRANTED
+
+   You are permitted to view, read, and browse the contents of this repository
+   for personal evaluation and portfolio-review purposes only.
+
+2. PERMISSION NOT GRANTED
+
+   No other rights are granted. Without the prior written permission of
+   Paramify, Inc., you may not:
+
+     (a) use the software or any part of it, for any purpose, whether
+         commercial or non-commercial;
+     (b) copy, reproduce, download, fork, clone, or mirror it, except for the
+         transient local copy your browser or Git client creates in the course
+         of viewing it;
+     (c) modify, adapt, translate, or create derivative works from it;
+     (d) merge or incorporate it, in whole or in part, into any other work;
+     (e) publish, distribute, sublicense, sell, rent, lease, or otherwise
+         transfer it; or
+     (f) use it as training data or input for any machine learning or
+         artificial intelligence model or system.
+
+3. NO PATENT LICENSE
+
+   No license to any patent, patent application, or other intellectual property
+   right is granted, whether expressly, by implication, by estoppel, or
+   otherwise.
+
+4. TRADEMARKS
+
+   "Paramify", the Paramify logo, the Paramify "P" mark (including the 3D model
+   at apps/server/public/paramify-p.glb), and all other Paramify names, logos,
+   product names, and marks appearing in this repository are trademarks of
+   Paramify, Inc. Nothing in this license grants any right or permission to use
+   them. They are included here only as they appear in the original work and are
+   reserved in full.
+
+5. NO ENDORSEMENT
+
+   This repository is a proof of concept and does not represent a released
+   Paramify product, service, or roadmap commitment. Its publication here is not
+   an endorsement by Paramify, Inc. of any person, statement, or use.
+
+6. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NONINFRINGEMENT. IN NO EVENT
+   SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES,
+   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+   ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+
+7. RESERVATION OF RIGHTS
+
+   All rights not expressly granted in Section 1 are reserved by Paramify, Inc.
+   If you wish to do anything with this code beyond reading it, contact Paramify,
+   Inc. to request permission.
